@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "clone-vault": "bash ./clone-vault.sh",
+    "clone-vault": "bash ./clone-vault.sh"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.4",
