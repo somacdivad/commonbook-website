@@ -7,7 +7,7 @@ import starlightObsidian, { obsidianSidebarGroup } from 'starlight-obsidian'
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'David Amos\'s Commonbook',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			plugins: [
 				// Generate the Obsidian vault pages.
