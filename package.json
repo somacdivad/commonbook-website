@@ -5,11 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "npm run clone-vault",
+    "prebuild": "bash ./prebuild.sh",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "clone-vault": "bash ./clone-vault.sh"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.4",

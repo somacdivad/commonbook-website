@@ -2,7 +2,7 @@
 src/vault/
 # build output
 dist/
-src/docs/notes
+src/content/docs/notes
 # generated types
 .astro/
 
