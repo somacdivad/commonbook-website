@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "prebuild": "bash ./prebuild.sh",
-    "build": "npm run prebuild && npm run build",
+    "build": "npm run build",
     "preview": "astro preview",
     "astro": "astro"
   },
