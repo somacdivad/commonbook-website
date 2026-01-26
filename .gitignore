@@ -1,3 +1,5 @@
+# obsidian vault
+/src/vault/
 # build output
 dist/
 # generated types
