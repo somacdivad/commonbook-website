@@ -1,0 +1,23 @@
+---
+title: Full Graph View
+description: Explore the complete graph of notes on David Amos' Commonbook website.
+tableOfContents: false
+sidebar:
+    label: Full Graph
+    order: 3
+---
+
+import config from 'virtual:starlight-site-graph/config';
+import { PageGraph } from "starlight-site-graph/components";
+
+<div class="full-graph">
+    <PageGraph
+        sitemap={config.sitemapConfig.sitemap}
+        config={{
+            depth: '-x',
+            class: 'h-screen',
+        }}
+    >
+    <span slot="title">David Amos's Commonbook</span>
+    </PageGraph>
+</div>
