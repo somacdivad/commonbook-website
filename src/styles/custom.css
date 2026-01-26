@@ -1,4 +1,29 @@
 :root {
+    --sl-font-system: 'Inter Variable', sans-serif;
+    body {
+        font-family: 'Inter Variable', sans-serif;
+        font-weight: 400;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .title-wrapper {
+        font-family: 'Caveat Variable', cursive;
+        font-weight: 700;
+    }
+
+    .title-wrapper a span {
+        overflow: visible;
+    }
+
+    .title-wrapper a {
+        font-size: 30pt;
+    }
+
     .full-graph .slsg-graph-component {
         display: block;
         width: 100%;
