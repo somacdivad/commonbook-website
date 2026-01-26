@@ -14,10 +14,13 @@ export default defineConfig({
 				starlightObsidian({
 					vault: './src/vault',
 					output: 'notes',
-					collapsedFolders: true,
+					sidebar: { collapsed: false, collapsedFolders: true },
 				}),
 			],
 			sidebar: [
+				{
+					slug: 'how-to-use',
+				},
 				obsidianSidebarGroup,
 			],
 		}),
