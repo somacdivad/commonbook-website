@@ -18,7 +18,7 @@ fi
 if [[ -d "${TARGET_DIR}/.git" ]]; then
 	echo "Vault already exists at ${TARGET_DIR}; updating..."
 	git -C "${TARGET_DIR}" pull --ff-only
-	exit 0
+else
+  echo "Cloning vault from ${REPO_URL} to ${TARGET_DIR}..."
+  git clone "${REPO_URL}" "${TARGET_DIR}"
 fi
-
-git clone "${REPO_URL}" "${TARGET_DIR}"
