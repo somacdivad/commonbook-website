@@ -74,11 +74,13 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'David\'s Commonbook',
+			title: 'david amos',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/somacdivad/commonbook-website' }],
 			customCss: [
 				// Relative path to your custom CSS file
 				'./src/styles/custom.css',
+				'@fontsource-variable/caveat',
+				'@fontsource-variable/inter',
 			],
 			plugins: [
 				// Generate the Obsidian vault pages.
