@@ -1,5 +1,8 @@
+# obsidian vault
+src/vault/
 # build output
 dist/
+src/content/docs/notes
 # generated types
 .astro/
 
