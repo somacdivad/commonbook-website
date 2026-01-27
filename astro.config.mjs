@@ -6,6 +6,8 @@ import starlightThemeObsidian from 'starlight-theme-obsidian'
 import starlightObsidian, { obsidianSidebarGroup } from 'starlight-obsidian'
 import { createRequire } from 'node:module';
 
+import tailwindcss from '@tailwindcss/vite';
+
 const require = createRequire(import.meta.url);
 
 /**
@@ -14,20 +16,20 @@ const require = createRequire(import.meta.url);
  * (like `path-browserify`) can throw `module is not defined`.
  */
 function browserOnlyNodeBuiltins() {
-	/** @type {import('vite').Plugin} */
-	const plugin = {
-		name: 'browser-only-node-builtins',
-		enforce: 'pre',
-		async resolveId(source, importer, options) {
-			// Only rewrite for client-side (non-SSR) requests.
-			if (options?.ssr) return null;
-			if (source === 'path' || source === 'node:path') {
-				return this.resolve('path-browserify', importer, { skipSelf: true });
-			}
-			return null;
-		},
-	};
-	return plugin;
+    /** @type {import('vite').Plugin} */
+    const plugin = {
+        name: 'browser-only-node-builtins',
+        enforce: 'pre',
+        async resolveId(source, importer, options) {
+            // Only rewrite for client-side (non-SSR) requests.
+            if (options?.ssr) return null;
+            if (source === 'path' || source === 'node:path') {
+                return this.resolve('path-browserify', importer, { skipSelf: true });
+            }
+            return null;
+        },
+    };
+    return plugin;
 }
 
 /**
@@ -37,79 +39,74 @@ function browserOnlyNodeBuiltins() {
  * the optimized browser deps.
  */
 function optimizeDepsPathPolyfill() {
-	const pathBrowserifyEntry = require.resolve('path-browserify');
+    const pathBrowserifyEntry = require.resolve('path-browserify');
 
-	/** @type {import('esbuild').Plugin} */
-	const plugin = {
-		name: 'optimize-deps-path-polyfill',
-		setup(build) {
-			build.onResolve({ filter: /^(node:)?path$/ }, () => {
-				return { path: pathBrowserifyEntry };
-			});
-		},
-	};
-	return plugin;
+    /** @type {import('esbuild').Plugin} */
+    const plugin = {
+        name: 'optimize-deps-path-polyfill',
+        setup(build) {
+            build.onResolve({ filter: /^(node:)?path$/ }, () => {
+                return { path: pathBrowserifyEntry };
+            });
+        },
+    };
+    return plugin;
 }
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://commonbook.davidamoswrites.club',
-	vite: {
-		plugins: [
-			browserOnlyNodeBuiltins(),
-			nodePolyfills({
-				include: ['process', 'buffer'],
-				globals: {
-					Buffer: true,
-					process: true,
-					global: true,
-				},
-			}),
-		],
-		optimizeDeps: {
-			esbuildOptions: {
-				plugins: [optimizeDepsPathPolyfill()],
-			},
-		},
-	},
-	integrations: [
-		starlight({
-			title: 'david amos',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/somacdivad/commonbook-website' }],
-			customCss: [
-				// Relative path to your custom CSS file
-				'./src/styles/custom.css',
-				'@fontsource-variable/caveat',
-				'@fontsource-variable/inter',
-			],
-			plugins: [
-				// Generate the Obsidian vault pages.
-				starlightObsidian({
-					vault: './src/vault',
-					output: 'notes',
-					sidebar: { collapsed: false, collapsedFolders: true },
-				}),
-				starlightThemeObsidian({
-					graph: true,
-					sitemapConfig: {
-						pageInclusionRules: ['src/content/docs/notes/**/*'],
-					},
-					graphConfig: {
-						depth: 3,
-						tagRenderMode: 'node',
-						nodeCurrentStyle: {
-							shapeSize: 8,
-						},
-					},
-				}),
-			],
-			sidebar: [
-				{
-					label: 'Start Here',
-					autogenerate: { directory: 'start-here' },
-				},
-				obsidianSidebarGroup,
-			],
-		}),
-	],
+    site: 'https://commonbook.davidamoswrites.club',
+    vite: {
+        plugins: [browserOnlyNodeBuiltins(), nodePolyfills({
+            include: ['process', 'buffer'],
+            globals: {
+                Buffer: true,
+                process: true,
+                global: true,
+            },
+        }), tailwindcss()],
+        optimizeDeps: {
+            esbuildOptions: {
+                plugins: [optimizeDepsPathPolyfill()],
+            },
+        },
+    },
+    integrations: [
+        starlight({
+            title: 'david amos',
+            social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/somacdivad/commonbook-website' }],
+            favicon: 'favicon.ico',
+            customCss: [
+                './src/styles/global.css',
+            ],
+            plugins: [
+                // Generate the Obsidian vault pages.
+                starlightObsidian({
+                    vault: './src/vault',
+                    output: 'notes',
+                    sidebar: { collapsed: false, collapsedFolders: true },
+                }),
+                starlightThemeObsidian({
+                    graph: true,
+                    sitemapConfig: {
+                        pageInclusionRules: ['src/content/docs/notes/**/*'],
+                    },
+                    graphConfig: {
+                        depth: 3,
+                        tagRenderMode: 'node',
+                        nodeCurrentStyle: {
+                            shapeSize: 8,
+                        },
+                    },
+                }),
+            ],
+            sidebar: [
+                {
+                    label: 'Start Here',
+                    autogenerate: { directory: 'start-here' },
+                },
+                obsidianSidebarGroup,
+            ],
+        }),
+    ],
 });

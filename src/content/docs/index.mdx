@@ -1,17 +1,25 @@
 ---
-title: Welcome to my mind.
+title: Explore my commonbook.
 description: Read and share David Amos' notes on literature, philosophy, and life.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Read and share my notes on literature, philosophy, and life.
+  tagline: "Read and share my notes on literature, philosophy, and life."
   image:
-    file: ../../assets/images/brain.png
+    file: ../../assets/images/thought-process.svg
   actions:
-    - text: Dive in
-      link: /start-here/full-graph/
-      icon: right-arrow
     - text: How it works
       link: /start-here/what-is-a-commonbook/
       icon: open-book
-      variant: secondary
 ---
+
+import config from 'virtual:starlight-site-graph/config';
+import { PageGraph } from "starlight-site-graph/components";
+
+<div class="full-graph">
+    <PageGraph
+        sitemap={config.sitemapConfig.sitemap}
+        config={{
+            depth: '-x',
+        }}
+    />
+</div>
