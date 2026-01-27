@@ -6,8 +6,6 @@ import starlightThemeObsidian from 'starlight-theme-obsidian'
 import starlightObsidian, { obsidianSidebarGroup } from 'starlight-obsidian'
 import { createRequire } from 'node:module';
 
-import tailwindcss from '@tailwindcss/vite';
-
 const require = createRequire(import.meta.url);
 
 /**
