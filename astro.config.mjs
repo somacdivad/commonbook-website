@@ -62,7 +62,7 @@ export default defineConfig({
                 process: true,
                 global: true,
             },
-        }), tailwindcss()],
+        })],
         optimizeDeps: {
             esbuildOptions: {
                 plugins: [optimizeDepsPathPolyfill()],
