@@ -92,8 +92,15 @@ export default defineConfig({
                     graphConfig: {
                         depth: 3,
                         tagRenderMode: 'node',
+                        renderUnresolved: true,
+                        repelForce: 500,
+                        centerForce: 0,
                         colliderPadding: 40,
                         linkDistance: 200,
+                        nodeDefaultStyle: {
+                            neighborScale: 5,
+                            shapeColor: 'nodeColorTag',
+                        },
                         nodeCurrentStyle: {
                             shapeSize: 8,
                         },
