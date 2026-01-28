@@ -92,6 +92,8 @@ export default defineConfig({
                     graphConfig: {
                         depth: 3,
                         tagRenderMode: 'node',
+                        colliderPadding: 40,
+                        linkDistance: 200,
                         nodeCurrentStyle: {
                             shapeSize: 8,
                         },
