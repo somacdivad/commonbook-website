@@ -86,17 +86,14 @@ export default defineConfig({
                 }),
                 starlightThemeObsidian({
                     graph: true,
+                    trackVisitedPages: 'disable',
                     sitemapConfig: {
                         pageInclusionRules: ['src/content/docs/notes/**/*'],
                     },
                     graphConfig: {
-                        depth: 3,
+                        depth: 1,
                         tagRenderMode: 'node',
                         renderUnresolved: true,
-                        repelForce: 500,
-                        centerForce: 0,
-                        colliderPadding: 40,
-                        linkDistance: 200,
                         nodeDefaultStyle: {
                             neighborScale: 5,
                             shapeColor: 'nodeColorTag',
