@@ -96,7 +96,7 @@ export default defineConfig({
                     graphConfig: {
                         depth: 1,
                         tagRenderMode: 'node',
-                        renderUnresolved: true,
+                        renderUnresolved: false,
                         nodeDefaultStyle: {
                             neighborScale: 5,
                             shapeColor: 'nodeColorTag',
