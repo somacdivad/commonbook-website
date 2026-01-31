@@ -1,11 +1,9 @@
 ---
-title: Explore my commonbook.
-description: Read and share David Amos' notes on literature, philosophy, and life.
+title: What I Think
+description: Read and share David Amos's notes on literature, philosophy, and life.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: "Read and share my notes on literature, philosophy, and life."
-  image:
-    file: ../../assets/images/thought-process.svg
+  tagline: "Use the graph below to explore my notes on literature, technology, philosophy, and life."
   actions:
     - text: How it works
       link: /start-here/what-is-a-commonbook/
@@ -21,10 +19,7 @@ import { PageGraph } from "starlight-site-graph/components";
         config={{
             nodeInclusionRules: ['!**/quotes/**'],
             depth: '-x',
-            repelForce: 500,
-            centerForce: 0,
             colliderPadding: 40,
-            linkDistance: 200,
         }}
     />
 </div>
