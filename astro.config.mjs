@@ -53,7 +53,7 @@ function optimizeDepsPathPolyfill() {
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://commonbook.davidamoswrites.club',
+    site: 'https://commonbook.davidamoswrites.com',
     vite: {
         plugins: [browserOnlyNodeBuiltins(), nodePolyfills({
             include: ['process', 'buffer'],
@@ -72,6 +72,9 @@ export default defineConfig({
     integrations: [
         starlight({
             title: 'david amos',
+            components: {
+                Head: './src/components/Head.astro',
+            },
             social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/somacdivad/commonbook-website' }],
             favicon: 'favicon.ico',
             customCss: [
